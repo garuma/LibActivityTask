@@ -70,7 +70,7 @@
     <Folder Include="Resources\drawable\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ActivityTask\ActivityTask.csproj">
+    <ProjectReference Include="..\ActivityTask\LibActivityTask.csproj">
       <Project>{8AC920B7-678F-49D4-B7F1-3BE811F86149}</Project>
       <Name>LibActivityTask</Name>
     </ProjectReference>
