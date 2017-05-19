@@ -33,7 +33,7 @@ namespace ActivityTaskTest
 
 		async ActivityTask DoAsyncStuff(ActivityScope scope)
 		{
-			await Task.Delay(1000); // Small network call
+			await Task.Delay(3000); // Medium network call
 			MyLabel(scope).Text = "Step 1";
 			await Task.Delay(5000); // Big network call
 			MyLabel(scope).Text = "Step 2";

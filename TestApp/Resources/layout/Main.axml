@@ -6,6 +6,10 @@
     <TextView
         android:id="@+id/myLabel"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/hello" />
+        android:layout_height="match_parent"
+        android:text="@string/hello"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:padding="24dp"
+        android:bufferType="spannable" />
 </LinearLayout>

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="hello">Hello World, Click Me!</string>
+	<string name="hello">This label will show first <b>Step 1</b> and then <b>Step 2</b>, try to rotate your screen or hit the home button in between.</string>
 	<string name="app_name">ActivityTaskTest</string>
 </resources>
