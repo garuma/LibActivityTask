@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MagicAsync", "MagicAsync\Ma
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibActivityTask", "ActivityTask\LibActivityTask.csproj", "{8AC920B7-678F-49D4-B7F1-3BE811F86149}"
 EndProject
+Project("{5DD5E4FA-CB73-4610-85AB-557B54E96AA9}") = "NuGet", "NuGet\NuGet.nuproj", "{BE139CE5-0A08-482F-A697-2E9661598B44}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,5 +21,9 @@ Global
 		{8AC920B7-678F-49D4-B7F1-3BE811F86149}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8AC920B7-678F-49D4-B7F1-3BE811F86149}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8AC920B7-678F-49D4-B7F1-3BE811F86149}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE139CE5-0A08-482F-A697-2E9661598B44}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE139CE5-0A08-482F-A697-2E9661598B44}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE139CE5-0A08-482F-A697-2E9661598B44}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE139CE5-0A08-482F-A697-2E9661598B44}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
