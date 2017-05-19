@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 using Neteril.Android;
 
-namespace MagicAsync
+namespace ActivityTaskTest
 {
-	[Activity(Label = "MagicAsync", MainLauncher = true, Icon = "@mipmap/icon")]
+	[Activity(Label = "ActivityTaskTest", MainLauncher = true, Icon = "@mipmap/icon")]
 	public class MainActivity : Activity
 	{
 		static bool launched = false;
@@ -29,14 +29,14 @@ namespace MagicAsync
 			}
 		}
 
-		Button MyButton(Activity activity) => activity.FindViewById<Button>(Resource.Id.myButton);
+		TextView MyLabel(Activity activity) => activity.FindViewById<TextView>(Resource.Id.myLabel);
 
 		async ActivityTask DoAsyncStuff(ActivityScope scope)
 		{
 			await Task.Delay(1000); // Small network call
-			MyButton(scope).Text = "Step 1";
+			MyLabel(scope).Text = "Step 1";
 			await Task.Delay(5000); // Big network call
-			MyButton(scope).Text = "Step 2";
+			MyLabel(scope).Text = "Step 2";
 		}
 	}
 }

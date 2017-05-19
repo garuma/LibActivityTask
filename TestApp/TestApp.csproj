@@ -6,8 +6,8 @@
     <ProjectGuid>{42B1AC60-D6E0-4FDC-B4EA-EB72E2970111}</ProjectGuid>
     <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
-    <RootNamespace>MagicAsync</RootNamespace>
-    <AssemblyName>MagicAsync</AssemblyName>
+    <RootNamespace>ActivityTaskTest</RootNamespace>
+    <AssemblyName>ActivityTaskTest</AssemblyName>
     <TargetFrameworkVersion>v7.1</TargetFrameworkVersion>
     <AndroidApplication>True</AndroidApplication>
     <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
