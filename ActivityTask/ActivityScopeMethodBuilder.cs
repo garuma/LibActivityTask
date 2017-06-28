@@ -1,40 +1,37 @@
 ﻿using System;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading;
+using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace Neteril.Android
 {
 	public class ActivityScopeMethodBuilder
 	{
-		static ActivityScope currentScope;
-
 		IAsyncStateMachine stateMachine;
 		SynchronizationContext syncContext;
 		ActivityScope scope;
 		ActivityTask task;
 
-		public static ActivityScopeMethodBuilder Create () => new ActivityScopeMethodBuilder (SynchronizationContext.Current, currentScope);
+		public static ActivityScopeMethodBuilder Create () => new ActivityScopeMethodBuilder (SynchronizationContext.Current);
 
-		ActivityScopeMethodBuilder (SynchronizationContext synchronizationContext, ActivityScope scope)
+		ActivityScopeMethodBuilder (SynchronizationContext synchronizationContext)
 		{
 			this.syncContext = synchronizationContext;
-			this.scope = scope;
 			this.task = new ActivityTask ();
-			if (scope == null)
-				throw new ArgumentNullException (nameof (scope), "A valid scope is required");
 			if (syncContext != null)
 				syncContext.OperationStarted ();
 		}
 
-		public static void SetCurrentScope (ActivityScope scope)
-		{
-			if (scope != null && currentScope != null)
-				throw new InvalidOperationException ("Another scope is already registered");
-			currentScope = scope;
-		}
-
 		public void Start<TStateMachine> (ref TStateMachine stateMachine) where TStateMachine : IAsyncStateMachine
 		{
+			scope = stateMachine.GetType ().GetFields ()
+			                    ?.FirstOrDefault (f => f.FieldType == typeof (ActivityScope))
+			                    ?.GetValue (stateMachine) as ActivityScope;
+			if (scope == null)
+				throw new InvalidOperationException ("An async method returning AsyncTask needs to have a valid parameter of type ActivityScope");
+
 			stateMachine.MoveNext ();
 		}
 

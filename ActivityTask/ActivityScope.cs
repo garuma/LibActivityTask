@@ -26,12 +26,7 @@ namespace Neteril.Android
 			activity.Application.RegisterActivityLifecycleCallbacks (listener);
 		}
 
-		public static ActivityScope Of (Activity activity)
-		{
-			var scope = new ActivityScope (activity);
-			ActivityScopeMethodBuilder.SetCurrentScope (scope);
-			return scope;
-		}
+		public static ActivityScope Of (Activity activity) => new ActivityScope (activity);
 
 		public void Dispose ()
 		{
@@ -40,7 +35,6 @@ namespace Neteril.Android
 				Instance.Application.UnregisterActivityLifecycleCallbacks (listener);
 				listener = null;
 			}
-			ActivityScopeMethodBuilder.SetCurrentScope (null);
 		}
 
 		public static implicit operator Activity (ActivityScope scope)
