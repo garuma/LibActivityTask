@@ -5,11 +5,11 @@ using System.Runtime.CompilerServices;
 // Change them to the values specific to your project.
 
 [assembly: AssemblyTitle("ActivityTask")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Android-friendly async methods")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("")]
-[assembly: AssemblyCopyright("${AuthorCopyright}")]
+[assembly: AssemblyCopyright("(c) Jérémie Laval")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

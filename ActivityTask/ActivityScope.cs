@@ -3,6 +3,7 @@ using System.Collections.Concurrent;
 using System.Threading;
 using Android.App;
 using Android.OS;
+using Android.Runtime;
 
 namespace Neteril.Android
 {
@@ -20,7 +21,7 @@ namespace Neteril.Android
 		ActivityScope (Activity activity)
 		{
 			Instance = activity;
-			activityIdentity = ActivityScopeIdProvider.GetNextId ();
+			activityIdentity = ActivityIdProvider.GetNextId ();
 			listener = new ActivityScopeListener ();
 			listener.ActivityStateChanged += HandleActivityStateChanged;
 			activity.Application.RegisterActivityLifecycleCallbacks (listener);
@@ -58,22 +59,25 @@ namespace Neteril.Android
 					Instance = activity;
 				break;
 			case ActivityState.SaveInstance:
-				if (ReferenceEquals (activity, Instance))
+				if (IsSameActivity (activity))
 					savedData.PutLong (BundleIdentityKey, activityIdentity);
 				break;
 			case ActivityState.Resumed:
 			case ActivityState.Started:
-				if (ReferenceEquals (activity, Instance))
+				if (IsSameActivity (activity))
 					SetAvailability (isAvailable: true);
 				break;
 			case ActivityState.Stopped:
 			case ActivityState.Destroyed:
 			case ActivityState.Paused:
-				if (ReferenceEquals (activity, Instance))
+				if (IsSameActivity (activity))
 					SetAvailability (isAvailable: false);
 				break;
 			}
 		}
+
+		bool IsSameActivity (Activity other) => ReferenceEquals (Instance, other)
+		                                        || JNIEnv.IsSameObject (Instance.Handle, other.Handle);
 
 		void SetAvailability (bool isAvailable)
 		{
@@ -107,12 +111,5 @@ namespace Neteril.Android
 			public void OnActivityStopped (Activity activity) => ActivityStateChanged?.Invoke (activity, ActivityState.Stopped, null);
 			public void OnActivityDestroyed (Activity activity) => ActivityStateChanged?.Invoke (activity, ActivityState.Destroyed, null);
 		}
-	}
-
-	static class ActivityScopeIdProvider
-	{
-		static long IdentityTagPool;
-
-		public static long GetNextId () => Interlocked.Increment (ref IdentityTagPool);
 	}
 }

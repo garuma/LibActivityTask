@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace Neteril.Android
 {
-	[AsyncMethodBuilder(typeof(ActivityScopeMethodBuilder))]
+	[AsyncMethodBuilder (typeof (ActivityScopeMethodBuilder))]
 	public class ActivityTask
 	{
 		TaskCompletionSource<VoidTaskResult> completion;

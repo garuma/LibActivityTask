@@ -10,7 +10,7 @@ that handles two things for you:
 The first one is common with configuration changes like the user rotating
 the device screen. In this case by default Android will re-create your
 activity which means that your async operation previously captured instance
-is now likely defunct. The library solves this problem by introducing
+is now likely defunct. This library solves this problem by introducing
 the `ActivityScope` class, once initialized with an Activity instance it
 becomes a replacement for it that will keep track of the latest incarnation
 of your activity.
@@ -21,11 +21,15 @@ activity. In this case, the library introduce the `ActivityTask` type that
 should be used as the return type of your async method (acting like a normal
 Task) would. When you do so, the async method builder associated with it will
 handle lifecycle events for you (using the previously mentioned `ActivityScope`)
-and schedule your await continuations only when the activity is alive.
+and schedule your await continuations only when the activity is alive. For this
+to work, the async method needs to be passed the instance of the `ActivityScope`
+from the caller.
 
-Below is small example of how you can use the library for those two things:
+Below is a small example of how you can use the library for those two things:
 
 ```
+using Neteril.Android;
+
 static bool alreadyExecuted = false;
 
 protected override async void OnCreate(Bundle savedInstanceState)

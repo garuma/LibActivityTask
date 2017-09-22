@@ -26,9 +26,7 @@ namespace Neteril.Android
 
 		public void Start<TStateMachine> (ref TStateMachine stateMachine) where TStateMachine : IAsyncStateMachine
 		{
-			scope = stateMachine.GetType ().GetFields ()
-			                    ?.FirstOrDefault (f => f.FieldType == typeof (ActivityScope))
-			                    ?.GetValue (stateMachine) as ActivityScope;
+			scope = ActivityScopeRetriever<TStateMachine>.GetScopeFromStateMachine (ref stateMachine);
 			if (scope == null)
 				throw new InvalidOperationException ("An async method returning AsyncTask needs to have a valid parameter of type ActivityScope");
 
