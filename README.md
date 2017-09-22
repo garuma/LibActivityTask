@@ -1,6 +1,6 @@
 # ActivityTask
 
-<a href="https://www.nuget.org/packages/Neteril.ActivityTask/"><img src="https://img.shields.io/nuget/v/org.neteril.LibActivityTask.svg" alt="NuGet" /></a>
+<a href="https://www.nuget.org/packages/Neteril.ActivityTask"><img src="https://img.shields.io/nuget/v/Neteril.ActivityTask.svg" alt="NuGet" /></a>
 
 This small library gives you a way to create asynchronous methods in Android that handles two things for you:
 
